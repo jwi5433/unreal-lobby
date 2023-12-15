@@ -1,0 +1,6 @@
+@UnrealLobby_HostAddress = http://localhost:5062
+
+GET {{UnrealLobby_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
