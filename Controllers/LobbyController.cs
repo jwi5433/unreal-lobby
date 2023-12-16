@@ -15,8 +15,16 @@ public class LobbyController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Lobby>> GetAllLobbies()
+    public async Task<ActionResult<IEnumerable<Lobby>>> GetAllLobbies()
     {
-        return Ok(_lobbyService.GetAll());   
+        var lobbies = await _lobbyService.GetAllAsync();
+        return Ok(lobbies);
+    }
+
+    [HttpPost("create")]
+    public ActionResult<Lobby> CreateLobby([FromBody] string lobbyName)
+    {
+        var newLobby = _lobbyService.CreateLobby(lobbyName);
+        return Ok(newLobby);
     }
 }
